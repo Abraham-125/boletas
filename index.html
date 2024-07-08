@@ -132,6 +132,39 @@
         .card img{
             filter: invert();
         }
+
+        .btn-close{
+            filter: invert(1);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            background-color: rgb(219, 219, 219);
+            border: none;
+        }
+
+        .btn-close:active{
+            border: none !important;
+        }
+
+        .list-group-item{
+            background-color: rgb(227, 227, 227);
+            border: 1px solid rgb(148, 148, 148) !important;
+            border-radius: 0px !important;
+        }
+
+        table{
+            border: 1px solid rgb(102, 102, 102) !important;
+        }
+        .table td{
+            border-bottom: none;
+        }
+
+        h4{
+            border: 1px solid rgb(102, 102, 102) !important;
+            padding: 8px 0px 8px 0px;
+
+        }
     </style>
 </head>
 <body>
@@ -164,7 +197,7 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             
                             <div class="card">
-                                <button class="button-card">
+                                <button class="button-card" data-bs-toggle="modal" data-bs-target="#boletaModal">
                                 <img src="iconos/boleta.png" class="card-img-top" alt="Boleta">
                                 <div class="card-body">
                                     <p class="card-text">Nombre Boleta</p>
@@ -327,6 +360,82 @@
             </div>
         </div>
     </div>
+
+    
+    <!--MODAL DETALLE BOLETA-->
+    <div class="modal fade" id="boletaModal" tabindex="-1" aria-labelledby="boletaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content text-center">
+                <div class="modal-header d-flex justify-content-between align-items-center">
+                    <h5 class="modal-title" id="boletaModalLabel">Boleta</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="boleta-container">
+                        <!-- Aquí se insertará la boleta -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const boleta = {
+                "tienda": "Lider",
+                "ubicacion": "Pajaritos, Maipú",
+                "dia": "Viernes",
+                "hora": "17:22",
+                "fecha": "28/06/2024",
+                "productos": [
+                    {"nombre": "Pan 1kg", "categoria": "Comida", "precio": 1000},
+                    {"nombre": "Polera", "categoria": "Ropa", "precio": 3000},
+                    {"nombre": "Shampoo", "categoria": "Producto", "precio": 1000},
+                    {"nombre": "Coca Cola", "categoria": "Bebida", "precio": 1000},
+                    {"nombre": "Celular", "categoria": "Tecnologia", "precio": 70000},
+                    {"nombre": "Repisa", "categoria": "Mueble", "precio": 10000}
+                ],
+                "precio_total": 76000
+            };
+
+            const boletaContainer = document.getElementById('boleta-container');
+            boletaContainer.innerHTML = `
+            <table class="table d-flex justify-content-center align-items-center">
+                <tbody>
+            <tr>
+                <td>Tienda: ${boleta.tienda}</td>
+                <td>Día: ${boleta.dia}</td>
+            </tr>
+            <tr>
+                <td>Hora: ${boleta.hora}</td>
+                <td>Fecha: ${boleta.fecha}</td>
+            </tr>
+                </tbody>
+            </table>
+            <table class="table">
+                <tbody>
+            <tr>
+                <td>Ubicacion: ${boleta.ubicacion}</td>
+            </tr>
+                </tbody>
+            </table>
+                <div class="row  d-flex justify-content-center">
+                    <div class="col-8 " style="width:100%">
+                        <ul class="list-group ">
+                            ${boleta.productos.map(producto => `
+                                <li class="list-group-item d-flex justify-content-between align-items-center ">
+                                    ${producto.nombre} [${producto.categoria}]
+                                    <span>$${producto.precio.toLocaleString()}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <h4>Total: $${boleta.precio_total.toLocaleString()}</h4>
+            `;
+        });
+    </script>
 
     <!-- Enlace al archivo JS de Bootstrap (incluye Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <title>Boleta</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <h1>Boleta N°1 - Líder - 28/06/2024</h1>
+
+        <!-- Tabla de productos -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aquí se llenarán los datos desde el JSON -->
+            </tbody>
+        </table>
+
+        <!-- Gráfico de torta -->
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="tu-archivo-json.js"></script> <!-- Carga los datos del JSON -->
+    <script src="script.js"></script> <!-- Aquí implementa la lógica del gráfico y cálculos -->
+</body>
+</html>
