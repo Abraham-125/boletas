@@ -30,7 +30,8 @@
             background-color: #3e78c3;
         }
         .content {
-            padding: 20px;
+            padding: 0px !important;
+            margin: 0px !important;
         }
         .content .header {
             display: flex;
@@ -70,11 +71,7 @@
         .pagination {
             justify-content: center;
         }
-        @media (max-width: 768px) {
-            .sidebar {
-                height: auto;
-            }
-        }
+
         .rounded-corner {
             border-radius: 15px;
             padding: 15px;
@@ -165,12 +162,28 @@
             padding: 8px 0px 8px 0px;
 
         }
+        .Xd{
+            border-radius: 0px 35% 35% 0px;
+            margin: 0px !important;
+            background-color: #1b3f71;
+            border: none;
+        }
+        .Xd:hover{
+            background-color: #1b3f71;
+            
+        }
+        .Xd:active{
+            background-color: #1b3f71;
+        }
     </style>
 </head>
 <body>
     <div class="container-fluid">
+        
         <div class="row">
-            <nav class="col-lg-2 col-md-3 col-4 sidebar collapse show" id="sidebar">
+            
+            <nav class="col-lg-2 col-md-3 col-4 sidebar collapse collapse-horizontal show" id="sidebar">
+                
                 <div class="nav flex-column">
                     <a class="nav-link active" href="#">Boletas</a>
                     <a class="nav-link" href="#">Dashboard</a>
@@ -179,11 +192,11 @@
                 </div>
             </nav>
             <main class="col-lg-10 col-md-9 col-8 content">
+                <button class="btn btn-primary Xd" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    ≡
+                </button>
                 <div class="header">
                     <h2>Boletas</h2>
-                    <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                        ☰
-                    </button>
                     <div class="header-icons">
                         <button data-bs-toggle="modal" data-bs-target="#crearBoletaModal"><i class="bi bi-plus-circle"></i></button>
                         <button><i class="bi bi-search"></i></button>
