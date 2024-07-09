@@ -29,9 +29,9 @@
         .sidebar .nav-link.active {
             background-color: #3e78c3;
         }
+        
         .content {
-            padding: 0px !important;
-            margin: 0px !important;
+            padding: 20px;
         }
         .content .header {
             display: flex;
@@ -51,8 +51,8 @@
             text-align: center;
             padding: 15px;
             margin: 10px;
-            border-top: 6px solid rgb(200, 200, 255);
-            border-left: 6px solid rgb(200, 200, 255);
+            border-top: 6px solid rgb(200, 221, 255);
+            border-left: 6px solid rgb(200, 221, 255);
             border-radius: 15px;
             background-color: #91b0e7;
             box-shadow: 4px 4px 0px 4px rgb(76, 98, 157);
@@ -80,6 +80,7 @@
 
         }
         .header-icons button {
+            
             border-radius: 50%;
             width: 50px;
             box-shadow: 2px 2px 0px 2px rgb(76, 98, 157);
@@ -145,7 +146,7 @@
         }
 
         .list-group-item{
-            background-color: rgb(227, 227, 227);
+            background-color: rgb(241, 244, 255);
             border: 1px solid rgb(148, 148, 148) !important;
             border-radius: 0px !important;
         }
@@ -163,22 +164,48 @@
 
         }
         .Xd{
+            position: absolute;
             border-radius: 0px 35% 35% 0px;
             margin: 0px !important;
             background-color: #1b3f71;
             border: none;
+            z-index: 1050; /* Asegura que esté siempre por encima */
         }
         .Xd:hover{
             background-color: #1b3f71;
-            
         }
         .Xd:active{
             background-color: #1b3f71;
         }
+
+        .xd{
+            padding: 0px !important;
+            margin: 0px !important;
+        }
+        .collapse,
+        .collapsing {
+            transition: 0.4s linear !important; /* Cambia la duración de la animación aquí */
+        }
+
+        #contenedor {
+            transition: transform 0.55s ease-in-out; /* Transición aplicada a la transformación */
+            transform: translateX(0); /* Inicialmente sin desplazamiento */
+        }
+        
+        #contenedor.margen150 {
+            transform: translateX(150px); /* Desplazamiento lateral cuando el sidebar está visible */
+        }
+
+        @media (min-width: 100px) and (max-width: 700px) {
+            .margen150{
+                transform: translateX(90px) !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    
+    <div class="container-fluid ">
         
         <div class="row">
             
@@ -191,10 +218,12 @@
                     <a class="nav-link" href="#">Título</a>
                 </div>
             </nav>
-            <main class="col-lg-10 col-md-9 col-8 content">
-                <button class="btn btn-primary Xd" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                    ≡
-                </button>
+            
+            <main class="col-lg-10 col-md-9 col-8 content xd ">
+                    <button class="btn btn-primary Xd" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                        ☰
+                    </button>
+            <div class="container mt-5 " id="contenedor">
                 <div class="header">
                     <h2>Boletas</h2>
                     <div class="header-icons">
@@ -204,12 +233,12 @@
                         <button><i class="bi bi-currency-dollar"></i></button>
                     </div>
                 </div>
-                <div class="rounded-corner mt-4">
-                    <div class="row">
+                <div class="rounded-corner mt-4 ">
+                    <div class="row " >
                         <!-- Card template to be duplicated -->
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-12">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-12 ">
                             
-                            <div class="card">
+                            <div class="card ">
                                 <button class="button-card" data-bs-toggle="modal" data-bs-target="#boletaModal">
                                 <img src="iconos/boleta.png" class="card-img-top" alt="Boleta">
                                 <div class="card-body">
@@ -298,6 +327,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
                 <nav>
                     <ul class="pagination">
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -308,8 +338,7 @@
                 </nav>
             </main>
         </div>
-    </div>
-
+</div>
     <!-- Modal -->
     <div class="modal fade" id="crearBoletaModal" tabindex="-1" aria-labelledby="crearBoletaModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -447,7 +476,18 @@
                 <hr>
                 <h4>Total: $${boleta.precio_total.toLocaleString()}</h4>
             `;
-        });
+
+            const sidebar = document.getElementById('sidebar');
+                const mainContent = document.getElementById('contenedor');
+            
+                sidebar.addEventListener('hidden.bs.collapse', () => {
+                    mainContent.classList.add('margen150');
+                });
+            
+                sidebar.addEventListener('shown.bs.collapse', () => {
+                    mainContent.classList.remove('margen150');
+                });
+            });
     </script>
 
     <!-- Enlace al archivo JS de Bootstrap (incluye Popper) -->
