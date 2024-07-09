@@ -145,7 +145,7 @@ body {
 }
 
 .list-group-item{
-    background-color: rgb(227, 235, 237);
+    background-color: rgb(255, 255, 255);
     border: 1px solid rgb(148, 148, 148) !important;
     border-radius: 0px !important;
 }
@@ -199,7 +199,7 @@ h4{
 
 @media (min-width: 100px) and (max-width: 700px) {
     .margen150{
-        transform: translateX(70px) !important;
+        transform: translateX(55px) !important;
     }
 }
 
