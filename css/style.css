@@ -40,10 +40,10 @@ body {
     text-align: center;
     padding: 15px;
     margin: 10px;
-    border-top: 6px solid rgb(156, 176, 255);
-    border-left: 6px solid rgb(156, 176, 255);
+    border-top: 6px solid rgb(156, 201, 255);
+    border-left: 6px solid rgb(156, 201, 255);
     border-radius: 15px;
-    background-color: rgb(79,118, 243);
+    background-color: rgb(105, 148, 235);
     box-shadow: 4px 4px 0px 4px rgb(9,28, 138);
     transition: transform 0.1s  ease, box-shadow 0.1s ease;
 }
@@ -164,16 +164,16 @@ h4{
     position: absolute;
     border-radius: 0px 35% 35% 0px;
     margin: 0px !important;
-    background-color: rgb(36, 36, 176);
+    background-color:  #001e7d;;
     border: none;
     z-index: 1050; /* Asegura que esté siempre por encima */
 }
 .Xd:hover{
-    background-color: rgb(36, 36, 176);
+    background-color: rgb(12, 42, 159);
 
 }
 .Xd:active{
-    background-color: rgb(36, 36, 176) !important;
+    background-color: rgb(25, 70, 155) !important;
 }
 
 .xd{
